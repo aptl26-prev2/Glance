@@ -1,77 +1,44 @@
-
-
-Cs50 Project Documentation
-
 Aghyad Deeb
-
 December 2021
-
-1 Motivation and general descrition
-
-My CS50 ﬁnal project is Glance, a social media network for Harvard students
-
-which is a bit diﬀerent. Glance is based on the idea of uniqueness, in social
-
-media networks like Facebook, Instagram, and Twitter, one can post as many
-
-times as they desire, which may result in the posts not being valuable since
-
-one can always post without any limits. However, in Glance, one can only post
-
-once per day. In addition, each day there is a general theme displayed in the
-
-homepage for users to follow in there posts. The cherry on top is that each
-
-day, there is one post that is randomly chosen and pinned to the top of the
-
-homepage, therefore this post is seen by all users adding more potential value
-
-to user’s posts.
-
-2 How to use Glance
-
-To use glance, the user should ﬁrst register a new account by entering their
-
-username, a Harvard College email, class, and password with conﬁrmation. Af-
-
-ter entering the required ﬁelds, Glance will automatically send an email to the
-
-user’s email address containing a conﬁrmation code that the user should copy
-
-and paste it in Glance. If the code is correct the website will allow the user to
-
-proceed and redirect them to the homepage, otherwise the user will be told that
-
-the code is incorrect. As mentioned earlier, the homepage contains the theme
-
-of the day, in addition to the pinned post and other posts beneath. Moreover,
-
-the homepage contains a space to post a new post and add a photo. In order
-
-to post the user should enter the text they want to post and click submit. The
-
-website will return an error message in case the user tries to post twice. In case
-
-the user wants to add a photo to their post, they should click the ”Add photo”
-
-button after submitting their post. The website will then redirect them to the
-
-uploading page and the user can chose the photo they want to include and click
-
-upload photo and their photo will be added to the post. Afterwards, the user
-
-can press the ”return to homepage button” to continue exploring other users’
-
-
-
-
-
-
-
-posts. Note that the pinned post is picked from the previous day’s posts but
-
-other posts are the posts posted on the same day.
-
-
-
+1 Project design breakdown
+I will discuss each function in the app.py ﬁle by order. Starting with the ”reg-
+ister” function, I have chosen to put several ﬁelds and to make the website
+exclusive to Harvard students by returning an error message if the email does
+not end with ”@college.harvard.edu. The purpose of this is that students would
+have more motivation to check the website frequently since all users have things
+in common which is being Harvard students and living in the same area. I have
+also chosen to add a class ﬁeld in order to make it more relatable. For example,
+a lot of seniors have a thesis, and all freshmen share the excitement and anxiety
+of being here for the ﬁrst time. The information the user entered is stored in a
+database.
+In order to verify that the user is actually a Harvard student, there is con-
+ﬁrmation page. The user is sent a conﬁrmation code generated randomly from
+uppercase characters by email. after entering the conﬁrmation code correctly,
+the user is redirected to the homepage.
+In the home page there is the text box to enter the code and the submit and
+upload photo button. All the posts are stored in a list along with the username,
+session id, class, photo, and the date of posting. I have chosen to store the
+posts in a list because it is updated each day and there is no need for previous
+posts to be saved. By default, there is a bunch of fake posts saved in the posts
+array so the website wouldn’t be empty. In addition, with the same goal of the
+website not being empty, the old posts are only deleted when a post is posted
+in a diﬀerent date. Then, the website checks if the user has already posted this
+day and returns an error message if so. If not and if the date is diﬀerent from
+the date of the last post, the website would pick a random post from the posts
+list and save the diﬀerent values that the post indicate in order to pass them
+to ”home.html” later. After picking the post, the website clears the posts array
+so the website doesn’t pick a post from the previous day in the following day.
+Afterwards, the website saves the details of the post and adds it to the posts
+array and redirects to the same homepage.
+1
+The allowed ﬁle function is used to store the image extensions so the user does
+not upload ﬁles which are not images, and the upload image function handles
+the image uploading process and returns errors for the possible unintended use
+cases. I tried to implement the ﬁle uploading process using php originally but I
+could not ﬁnd a way to implement php in ﬂask.
+Finally, the login, logout, and errorhandler functions are the same functions
+from the ﬁnance pset.
+When it comes to the html ﬁles, I tried to keep he design clean and simple.
+2
+Youtube video link: https://youtu.be/qspeN12Be7M
 
