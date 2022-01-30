@@ -1,94 +1,68 @@
-﻿
-
-Cs50 Project Design
+Cs50 Project Documentation
 
 Aghyad Deeb
 
 December 2021
 
-1 Project design breakdown
+1 Motivation and general descrition
 
-I will discuss each function in the app.py ﬁle by order. Starting with the ”reg-
+My CS50 ﬁnal project is Glance, a social media network for Harvard students
 
-ister” function, I have chosen to put several ﬁelds and to make the website
+which is a bit diﬀerent. Glance is based on the idea of uniqueness, in social
 
-exclusive to Harvard students by returning an error message if the email does
+media networks like Facebook, Instagram, and Twitter, one can post as many
 
-not end with ”@college.harvard.edu. The purpose of this is that students would
+times as they desire, which may result in the posts not being valuable since
 
-have more motivation to check the website frequently since all users have things
+one can always post without any limits. However, in Glance, one can only post
 
-in common which is being Harvard students and living in the same area. I have
+once per day. In addition, each day there is a general theme displayed in the
 
-also chosen to add a class ﬁeld in order to make it more relatable. For example,
+homepage for users to follow in there posts. The cherry on top is that each
 
-a lot of seniors have a thesis, and all freshmen share the excitement and anxiety
+day, there is one post that is randomly chosen and pinned to the top of the
 
-of being here for the ﬁrst time. The information the user entered is stored in a
+homepage, therefore this post is seen by all users adding more potential value
 
-database.
+to user’s posts.
 
-In order to verify that the user is actually a Harvard student, there is con-
+2 How to use Glance
+First open the file after cloning it and then open terminal in the file and type
 
-ﬁrmation page. The user is sent a conﬁrmation code generated randomly from
+ $ flask run
+ 
+Afterwards, the user should ﬁrst register a new account by entering their
 
-uppercase characters by email. after entering the conﬁrmation code correctly,
+username, a Harvard College email, class, and password with conﬁrmation. Af-
 
-the user is redirected to the homepage.
+ter entering the required ﬁelds, Glance will automatically send an email to the
 
-In the home page there is the text box to enter the code and the submit and
+user’s email address containing a conﬁrmation code that the user should copy
 
-upload photo button. All the posts are stored in a list along with the username,
+and paste it in Glance. If the code is correct the website will allow the user to
 
-session id, class, photo, and the date of posting. I have chosen to store the
+proceed and redirect them to the homepage, otherwise the user will be told that
 
-posts in a list because it is updated each day and there is no need for previous
+the code is incorrect. As mentioned earlier, the homepage contains the theme
 
-posts to be saved. By default, there is a bunch of fake posts saved in the posts
+of the day, in addition to the pinned post and other posts beneath. Moreover,
 
-array so the website wouldn’t be empty. In addition, with the same goal of the
+the homepage contains a space to post a new post and add a photo. In order
 
-website not being empty, the old posts are only deleted when a post is posted
+to post the user should enter the text they want to post and click submit. The
 
-in a diﬀerent date. Then, the website checks if the user has already posted this
+website will return an error message in case the user tries to post twice. In case
 
-day and returns an error message if so. If not and if the date is diﬀerent from
+the user wants to add a photo to their post, they should click the ”Add photo”
 
-the date of the last post, the website would pick a random post from the posts
+button after submitting their post. The website will then redirect them to the
 
-list and save the diﬀerent values that the post indicate in order to pass them
+uploading page and the user can chose the photo they want to include and click
 
-to ”home.html” later. After picking the post, the website clears the posts array
+upload photo and their photo will be added to the post. Afterwards, the user
 
-so the website doesn’t pick a post from the previous day in the following day.
+can press the ”return to homepage button” to continue exploring other users’
 
-Afterwards, the website saves the details of the post and adds it to the posts
+posts. Note that the pinned post is picked from the previous day’s posts but
 
-array and redirects to the same homepage.
-
-1
-
-
-
-
-
-The allowed ﬁle function is used to store the image extensions so the user does
-
-not upload ﬁles which are not images, and the upload image function handles
-
-the image uploading process and returns errors for the possible unintended use
-
-cases. I tried to implement the ﬁle uploading process using php originally but I
-
-could not ﬁnd a way to implement php in ﬂask.
-
-Finally, the login, logout, and errorhandler functions are the same functions
-
-from the ﬁnance pset.
-
-When it comes to the html ﬁles, I tried to keep he design clean and simple.
-
-2
-
-Youtube video link:
-https://youtu.be/qspeN12Be7M
+other posts are the posts posted on the same day.
