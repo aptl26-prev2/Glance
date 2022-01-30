@@ -1,5 +1,3 @@
-Cs50 Project Documentation
-
 Aghyad Deeb
 
 December 2021
